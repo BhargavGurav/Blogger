@@ -1,0 +1,5 @@
+{% extends 'profile.html' %}
+{% block profile-name %}{{required.user.first_name}} {{required.user.last_name}}{% endblock %}
+{% block profile-email %}{{required.user.email}}{% endblock %}
+{% block blog-count %}{{blogs}}{% endblock %}
+{% block profile-pic %}<img src="../../media/{{required.profile_pic}}" alt="">{% endblock %}

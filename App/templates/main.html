@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% block title %}Main{% endblock title %}
+{% block nav-btn %}
+    <button class="btn btn-danger float-end me-2 mt-1" data-bs-toggle="modal" data-bs-target="#logoutmodal">Logout</button>
+    <button class="btn btn-success float-end me-2 mt-1" data-bs-toggle="modal" data-bs-target="#addblogmodal" title="Post Blog">Write</button>
+    <a href="{% url 'profile' %}" class="text-light" title="Profile"><i class="fas fa-user fs-5 p-2 float-end me-2 mt-1"></i></a>
+{% endblock %}
+{% block page-data %}
+    <div class="container-fluid main-container">
+        <div class="row main-row d-flex justify-content-around">
+            {% if data|length == 0 %}
+                <div class="col-12 no-blog-div">
+                    <p class="fs-5 text-light">No blogs posted by anyone yet.</p>
+                </div>
+            {% else %}
+            {% for i in data %}
+                <div class="col-lg-8 col-md-9 col-sm-10 col-11 my-3 mx-3 main-content-col">
+                    {% if i.user in user %}
+                        <a href="/request_profile/{{i.user.id}}" style="text-decoration: none;"><div class="info-div m-2">
+                            <img src="../../media/{{i.user.profile_pic}}" alt="" class="profile-pic">
+                            <span class="fs-4 name">{{i.user.user.first_name }} {{ i.user.user.last_name }}</span>
+                        </div></a>
+                        <hr>
+                    {% endif %}
+                        <div class="main-content">
+                            <h3>{{i.heading}}</h3>
+                            {% if i.picture %}
+                            <img src="../../media/{{i.picture}}" alt="" class="content-img">
+                            {% endif %}
+                            <hr>
+                            <p>{{i.data}}</p>
+                        </div>
+                    
+                </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="modal" id="addblogmodal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 style="font-weight:bold;">Add Blog</h4>
+                    <button class="btn btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="" method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group m-2">
+                            <label for="">Heading</label>
+                            <input type="text" class="form-control" name="heading">
+                        </div>
+                        <div class="form-group m-2">
+                            <label for="">Data</label>
+                            <input type="text" class="form-control" name="data">
+                        </div>
+                        <div class="form-group m-2">
+                            <label for="">Picture</label>
+                            <input type="file" class="form-control" name="blog_img">
+                        </div>
+
+                        <div class="d-grid gap-2 mt-3">
+                            <button type="submit" class="btn btn-outline-success">Post</button>
+                            <button class="btn  btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% for message in messages %}
+        {% if message.tags == 'success' %}
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+            <script>
+                let m = '{{message}}';
+                swal('', m, 'success');
+            </script>
+        {% else  %}
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+            <script>
+                let n = '{{message}}';
+                swal('', n, 'error');
+            </script>
+        {% endif %}
+    {% endfor %}
+{% endblock page-data %}

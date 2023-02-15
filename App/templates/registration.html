@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% block title %}Registrations{% endblock title %}
+{% block page-data %}
+<div class="registration-container">
+    <div class="register-row">
+        <div class="col-lg-7 col-mg-8 col-sm-10 form-col p-2">
+            <form action="" method="post" class="py-2" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="col-12 my-3"><h3 class="text-center text-light"><b>Registration</b></h3></div>
+                <div class="form-group d-flex justify-content-between">
+                    <div class="col-5">
+                        <label for="" class="text-light">First Name</label>
+                        <input type="text" name="fname" id="" class="form-control">
+                    </div>
+                    <div class="col-5">
+                        <label for="" class="text-light">Last Name</label>
+                        <input type="text" name="lname" id="" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group mt-3">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class=""><i class="fas fa-envelope input-group-text "></i></span>
+                        </div>
+                        <input type="email" name="email" id="" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group mt-3">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Profile Pic</span>
+                        </div>
+                        <input type="file" name="pic" id="" class="form-control">
+                    </div>
+                </div>
+
+                <div class="form-group mt-3">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class=""><i class="fas fa-key input-group-text "></i></span>
+                        </div>
+                        <input type="password" name="password" id="password" class="form-control">
+                    </div>
+                    <input type="checkbox" class="mt-1" onclick="showpass()"><span class="text-light ms-2">See password</span> 
+                    <ul class="text-light">
+                        <li>Password must be 8 character long.</li>
+                        <li>Password must contain at least one uppercase character.</li>
+                        <li>Password must contain at least one lowercase character.</li>
+                        <li>Password must contain at least one numeric character.</li>
+                    </ul>
+                </div>
+
+                <div class="d-grid gap-2 my-2">
+                    <button type="submit" class="btn btn-success">Register</button>
+                    <a href="{% url 'home' %}" class="btn btn-dark">Back to home</a>
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{% for message in messages %}
+    {% if message.tags == 'success' %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+        <script>
+            let m = '{{message}}';
+            swal('', m, 'success');
+        </script>
+    {% else  %}
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+        <script>
+            let n = '{{message}}';
+            swal('', n, 'error');
+        </script>
+    {% endif %}
+{% endfor %}
+
+<script>
+    function showpass(){
+        let password = document.getElementById('password');
+        if (password.type == "password"){
+            password.type = "text";
+        }
+        else{
+            password.type = "password";
+
+        }
+
+    }
+
+</script>
+{% endblock %}

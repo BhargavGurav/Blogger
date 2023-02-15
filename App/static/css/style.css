@@ -1,0 +1,245 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+    box-sizing: border-box;
+}
+
+/* base css  */
+body{
+    height: 100vh;
+}
+.base img{
+    border-radius: 12px;
+    height: 60%;
+}
+
+.base{
+    box-shadow: 0 8px 16px 0 rgba(16, 13, 13, 0.511);
+    background: rgba(255, 255, 255, .3);
+    backdrop-filter: blur(5px);
+}
+.base .row{
+    height: 60px !important;
+}
+
+/* home page  */
+.home-page-container{
+    position: relative;
+    height: 88.2vh;
+    background-image: url('../images/home-img.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+}
+.home-page-container::before{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, .7);
+}
+.home-container-row{
+    position: relative;
+}
+
+/* login page  */
+.login-container{
+    position: relative;
+    background-image: url('../images/login-page.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 120%;
+    background-position: center;
+    height: 100vh;
+
+}
+.login-container::before{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, .3);
+}
+.login-page-row{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+.login-container form{
+    border: 2px rgba(255, 255, 255, .3);
+    border-radius: 12px;
+    box-shadow: 0 8px 16px 0 rgba(43, 30, 30, 0.495);
+    background: rgba(255, 255, 255, .3);
+    backdrop-filter: blur(5px);
+}
+
+.sign-up a{
+    font-weight: bold;
+}
+
+/* registration page  */
+.registration-container{
+    position: relative;
+    background-image: url('../images/registration-bg.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    height: 88.2vh;
+    
+}
+
+.registration-container::before{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, .3);
+}
+
+.register-row{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.register-row .form-col{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.register-row form .input-group-text{
+    padding: 12px;
+}
+.register-row .form-col form{
+    border: 1px solid rgba(255, 255, 255, .3);
+    background: rgba(255, 255, 255, .3);
+    box-shadow: 0 8px 16px 0 rgba(16, 15, 15, 0.326);
+    padding: 7px;
+    border-radius: 7px;
+    width: 100%;
+}
+
+
+/* main page  */
+.main-container{
+    
+    background-image: url('../images/main-bg.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+   
+    
+}
+
+.main-container::before{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: auto;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, .3);
+}
+.main-container .row{
+    position: relative;
+}
+.main-container .main-content-col{
+    background: rgba(255, 255, 255, 0.582);
+    border: 1px solid rgba(255, 255, 255, .3);
+    box-shadow: 0 8px 16px 0 rgba(31, 26, 26, 0.418);
+    border-radius: 7px;
+    backdrop-filter: blur(5px);
+}
+.main-container .main-content .content-img{
+    width: 100%;
+    height: 50%;
+    border: 1px solid white;
+    border-radius: 7px;
+}
+.main-container .main-content{
+    margin: 5px;
+
+}
+
+.main-container .main-content-col .profile-pic{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid rgba(0, 0, 0, .3);
+    box-shadow: 0 8px 16px 0 rgba(31, 26, 26, 0.374);
+}
+
+.main-container .main-content-col .info-div .name{
+    font-weight: bold;
+}
+
+.no-blog-div{
+    height: 87.5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.main-container .main-content h3{
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+/* profile page  */
+.profile-container{
+    background-image: url('../images/main-bg.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    height: 87.5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.page-container::before{
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0, 0, 0, .3);
+}
+
+
+.profile-col{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.profile-col .profile-info{
+    background: rgba(255, 255, 255, 0.582);
+    border: 1px solid rgba(255, 255, 255, .3);
+    box-shadow: 0 8px 16px 0 rgba(31, 26, 26, 0.418);
+    border-radius: 7px;
+    width: 100%;
+    backdrop-filter: blur(5px);
+    
+}
+.profile-col .single-info span{
+font-weight: bold;
+
+}
+#profile-info-img img{
+    width: 70%;
+    height: 100%;
+    border-radius: 7px;
+}
